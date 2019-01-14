@@ -22,7 +22,9 @@ redis 连接池
  */
 type redisClientPool struct {
 	sync.RWMutex
-	pool map[string]*redisClient
+	pool     map[string]*redisClient
+	usedPool map[string]map[string]*redisClient
+	freePool map[string]map[string]*redisClient
 }
 
 /*
